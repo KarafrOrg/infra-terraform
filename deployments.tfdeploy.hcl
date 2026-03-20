@@ -9,7 +9,7 @@ deployment "production" {
 
     // region Organizations
     organizations = {
-      "homelab" = {
+      "karafrorg-homelab" = {
         email                    = store.varset.credentials.stable.homelab_org_email
         enable_speculative_plans = false
       }
