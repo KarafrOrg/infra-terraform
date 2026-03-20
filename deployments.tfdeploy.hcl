@@ -10,8 +10,8 @@ deployment "production" {
     // region Organizations
     organizations = {
       "homelab" = {
-        email                     = store.varset.credentials.stable.homelab_org_email
-        speculative_plans_enabled = false
+        email                    = store.varset.credentials.stable.homelab_org_email
+        enable_speculative_plans = false
       }
     }
     // endregion
