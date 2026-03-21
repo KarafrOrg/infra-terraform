@@ -22,13 +22,14 @@ resource "tfe_workspace_variable_set" "additional" {
   for_each = {
     for pair in flatten([
       for workspace in var.workspaces : [
-        for variable_set in var.workspaces.additional_variable_sets : {
+        for variable_set in try(workspace.additional_variable_sets, []) : {
           workspace_name    = workspace.name
           variable_set_name = variable_set
         }
       ]
-    ]) : "${pair.workspace_name}:/${pair.variable_set}" => pair
+    ]) : "${pair.workspace_name}:${pair.variable_set_name}" => pair
   }
-  variable_set_id = each.value["variable_set_name"]
-  workspace_id    = tfe_workspace.default[each.value["workspace_name"]].id
+
+  variable_set_id = each.value.variable_set_name
+  workspace_id    = tfe_workspace.default[each.value.workspace_name].id
 }
