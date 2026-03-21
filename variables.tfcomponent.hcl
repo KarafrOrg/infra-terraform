@@ -22,6 +22,7 @@ variable "projects" {
     additional_tags = optional(map(string))
     workspaces = map(object({
       additional_tags = optional(map(string))
+      additional_variable_sets = optional(list(string))
     }))
     stacks = map(object({
       additional_tags = optional(map(string))

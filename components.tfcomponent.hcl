@@ -40,7 +40,7 @@ component "terraform-workspace" {
           name    = ws_name
           project = project.name
           description = try(ws.description, null)
-
+          additional_variable_sets = try(ws.additional_variable_sets, [])
           additional_tags = merge(
             try(project.additional_tags, {}),
             try(ws.additional_tags, {})
