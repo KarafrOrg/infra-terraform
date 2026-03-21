@@ -3,6 +3,6 @@ variable "projects" {
   type = list(object({
     name            = string
     organization    = string
-    additional_tags = map(string)
+    additional_tags = optional(map(string))
   }))
 }
