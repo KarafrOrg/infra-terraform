@@ -15,5 +15,14 @@ deployment "production" {
       }
     }
     // endregion
+
+    // region Projects
+    projects = [
+      {
+        name         = "karafrorg-homelab-project"
+        organization = "karafrorg-homelab"
+      }
+    ]
+    // endregion
   }
 }

@@ -7,3 +7,9 @@ resource "tfe_organization" "organization" {
     prevent_destroy = true
   }
 }
+
+resource "tfe_organization_default_settings" "default" {
+  for_each               = var.organizations
+  organization           = tfe_organization.organization[each.key].id
+  default_execution_mode = "Remote"
+}
