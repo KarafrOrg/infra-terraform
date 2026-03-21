@@ -1,6 +1,6 @@
 data "tfe_organization" "organization" {
   for_each = { for project in var.projects : project.name => project }
-  name     = each.value.organization
+  name     = each.value.organization_name
 }
 
 resource "tfe_project" "project" {
