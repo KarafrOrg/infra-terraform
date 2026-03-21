@@ -1,6 +1,6 @@
 data "tfe_project" "parent" {
   for_each = { for workspace in var.workspaces : workspace.name => workspace }
-  name     = each.key
+  name     = each.value.project_name
 }
 
 resource "tfe_workspace" "default" {
