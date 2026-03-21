@@ -37,8 +37,9 @@ component "terraform-workspace" {
     workspaces = flatten([
       for project in var.projects : [
         for ws_name, ws in project.workspaces : {
-          name    = ws_name
-          project_name = project.name
+          name              = ws_name
+          project_name      = project.name
+          organization_name = project.organization_name
           description = try(ws.description, null)
           additional_variable_sets = try(ws.additional_variable_sets, [])
           additional_tags = merge(

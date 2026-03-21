@@ -3,6 +3,7 @@ variable "workspaces" {
   type = list(object({
     name                     = string
     project_name             = string
+    organization_name        = string
     desription               = optional(string)
     additional_tags          = optional(map(string))
     additional_variable_sets = optional(list(string))
