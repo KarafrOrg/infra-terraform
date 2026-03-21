@@ -19,8 +19,32 @@ deployment "production" {
     // region Projects
     projects = [
       {
-        name         = "karafrorg-homelab-project"
-        organization = "karafrorg-homelab"
+        name              = "karafrorg-homelab-project"
+        organization_name = "karafrorg-homelab"
+        workspaces = {
+          "karafrorg-homelab-project-workspace" = {
+            additional_tags = {
+              environment = "production"
+            }
+          }
+          "karafrorg-homelab-project-dev" = {
+            additional_tags = {
+              environment = "development"
+            }
+          }
+        },
+        stacks = {
+          "karafrorg-homelab-project-stack" = {
+            additional_tags = {
+              environment = "production"
+            }
+          }
+          "karafrorg-homelab-project-dev-stack" = {
+            additional_tags = {
+              environment = "development"
+            }
+          }
+        }
       }
     ]
     // endregion

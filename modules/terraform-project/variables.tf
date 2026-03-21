@@ -4,5 +4,6 @@ variable "projects" {
     name            = string
     organization    = string
     additional_tags = optional(map(string))
+    description     = optional(string)
   }))
 }

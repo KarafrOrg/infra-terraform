@@ -20,5 +20,11 @@ variable "projects" {
     name         = string
     organization = string
     additional_tags = optional(map(string))
+    workspaces = map(object({
+      additional_tags = optional(map(string))
+    }))
+    stacks = map(object({
+      additional_tags = optional(map(string))
+    }))
   }))
 }
