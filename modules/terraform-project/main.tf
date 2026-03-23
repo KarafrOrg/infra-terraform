@@ -3,7 +3,6 @@ data "tfe_organization" "organization" {
   name     = each.value.organization_name
 }
 
-
 resource "tfe_project" "project" {
   for_each     = { for project in var.projects : project.name => project }
   name         = each.key

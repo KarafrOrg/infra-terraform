@@ -10,6 +10,7 @@ resource "tfe_workspace" "default" {
   description = try(each.value.desription, "${each.key} workspace")
   tags        = merge(each.value.additional_tags, local.default_workspace_tags)
   project_id  = data.tfe_project.parent[each.key].id
+  organization = each.value.organization_name
 }
 
 resource "tfe_workspace_variable_set" "default" {
