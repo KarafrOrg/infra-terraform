@@ -21,5 +21,5 @@ resource "tfe_variable_set" "default" {
 resource "tfe_project_variable_set" "default" {
   for_each        = { for project in var.projects : project.name => project }
   project_id      = tfe_project.project[each.key].id
-  variable_set_id = tfe_project_variable_set.default[each.key].id
+  variable_set_id = tfe_variable_set.default[each.key].id
 }
