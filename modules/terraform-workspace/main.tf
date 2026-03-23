@@ -5,18 +5,39 @@ data "tfe_project" "parent" {
 }
 
 resource "tfe_workspace" "default" {
-  for_each    = { for workspace in var.workspaces : workspace.name => workspace }
-  name        = each.key
-  description = try(each.value.desription, "${each.key} workspace")
-  tags        = merge(each.value.additional_tags, local.default_workspace_tags)
-  project_id  = data.tfe_project.parent[each.key].id
+  for_each     = { for workspace in var.workspaces : workspace.name => workspace }
+  name         = each.key
+  description  = try(each.value.desription, "${each.key} workspace")
+  tags         = merge(each.value.additional_tags, local.default_workspace_tags)
+  project_id   = data.tfe_project.parent[each.key].id
+  organization = each.value.organization_name
+}
+
+resource "tfe_variable_set" "default" {
+  for_each     = { for workspace in var.workspaces : workspace.name => workspace }
+  name         = local.default_variable_set_name
   organization = each.value.organization_name
 }
 
 resource "tfe_workspace_variable_set" "default" {
   for_each        = { for workspace in var.workspaces : workspace.name => workspace }
-  variable_set_id = local.default_variable_set_name
+  variable_set_id = tfe_variable_set.default[each.key].id
   workspace_id    = tfe_workspace.default[each.key].id
+}
+
+resource "tfe_variable_set" "additional" {
+  for_each = {
+    for pair in flatten([
+      for workspace in var.workspaces : [
+        for variable_set in coalesce(workspace.additional_variable_sets, []) : {
+          workspace_name    = workspace.name
+          variable_set_name = variable_set
+        }
+      ]
+    ]) : "${pair.workspace_name}:${pair.variable_set_name}" => pair
+  }
+  name         = each.value.variable_set_name
+  organization = each.value.organization_name
 }
 
 resource "tfe_workspace_variable_set" "additional" {
@@ -30,7 +51,6 @@ resource "tfe_workspace_variable_set" "additional" {
       ]
     ]) : "${pair.workspace_name}:${pair.variable_set_name}" => pair
   }
-
-  variable_set_id = each.value.variable_set_name
+  variable_set_id = tfe_variable_set.additional[each.key].id
   workspace_id    = tfe_workspace.default[each.value.workspace_name].id
 }
