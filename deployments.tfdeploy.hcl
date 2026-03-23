@@ -22,12 +22,12 @@ deployment "production" {
         name              = "karafrorg-homelab-project"
         organization_name = "karafrorg-homelab"
         workspaces = {
-          "karafrorg-homelab-project-workspace" = {
+          "karafrorg_homelab_project_prod" = {
             additional_tags = {
               environment = "production"
             }
           }
-          "karafrorg-homelab-project-dev" = {
+          "karafrorg_homelab_project_dev" = {
             additional_tags = {
               environment = "development"
             }
