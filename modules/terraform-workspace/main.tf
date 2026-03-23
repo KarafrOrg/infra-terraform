@@ -15,7 +15,7 @@ resource "tfe_workspace" "default" {
 
 resource "tfe_variable_set" "default" {
   for_each     = { for workspace in var.workspaces : workspace.name => workspace }
-  name         = local.default_variable_set_name
+  name         = "${local.default_variable_set_name_prefix}_${each.key}"
   organization = each.value.organization_name
 }
 
