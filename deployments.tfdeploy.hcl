@@ -11,7 +11,6 @@ deployment "production" {
     authorization = {
       github = {
         token               = store.varset.credentials.stable.github_token
-        app_installation_id = store.varset.credentials.stable.github_app_installation_id
       }
     }
     // endregion
