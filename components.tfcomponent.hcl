@@ -60,7 +60,7 @@ component "terraform-oauth" {
   source = "./modules/terraform-oauth"
 
   providers = {
-    github = provider.github.main
+    tfe = provider.tfe.main
   }
 
   inputs = {
