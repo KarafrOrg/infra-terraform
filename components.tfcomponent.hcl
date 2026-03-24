@@ -55,3 +55,15 @@ component "terraform-workspace" {
     component.terraform-project
   ]
 }
+
+component "terraform-oauth" {
+  source = "./modules/terraform-oauth"
+
+  providers = {
+    github = provider.github.main
+  }
+
+  inputs = {
+    oauth_token = var.authorization.github.token
+  }
+}

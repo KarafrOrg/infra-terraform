@@ -17,7 +17,7 @@ variable "organizations" {
 variable "projects" {
   description = "List of projects to create in Terraform Cloud. Each project will be associated with a specific organization."
   type = list(object({
-    name         = string
+    name              = string
     organization_name = string
     additional_tags = optional(map(string))
     workspaces = map(object({
@@ -28,4 +28,14 @@ variable "projects" {
       additional_tags = optional(map(string))
     }))
   }))
+}
+
+variable "authorization" {
+  description = "GitHub App authorization configuration for Terraform Cloud. This includes the app's client ID, client secret, and the organization it should be associated with."
+  type = object({
+    github = object({
+      token = string
+    })
+  })
+  sensitive = true
 }

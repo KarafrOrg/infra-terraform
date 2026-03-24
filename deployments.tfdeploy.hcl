@@ -7,6 +7,15 @@ deployment "production" {
   inputs = {
     terraform_cloud_token = store.varset.credentials.terraform_cloud_token
 
+    // region Authorization
+    authorization = {
+      github = {
+        token               = store.varset.credentials.stable.github_token
+        app_installation_id = store.varset.credentials.stable.github_app_installation_id
+      }
+    }
+    // endregion
+
     // region Organizations
     organizations = {
       "karafrorg-homelab" = {
