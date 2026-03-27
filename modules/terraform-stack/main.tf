@@ -14,7 +14,7 @@ resource "tfe_stack" "managed" {
   name       = each.value.name
   project_id = data.tfe_project.parent[each.key].id
   vcs_repo {
-    identifier     = data.github_repository.repository[each.key].name
+    identifier     = "KarafrOrg/infra-terraform"
     branch         = each.value.repository.default_branch
     oauth_token_id = each.value.repository.oauth_token_id
   }
