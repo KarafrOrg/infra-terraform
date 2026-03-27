@@ -26,7 +26,10 @@ variable "projects" {
     }))
     stacks = map(object({
       additional_tags = optional(map(string))
-      repository = string
+      repository = object({
+        name           = string
+        default_branch = string
+      })
     }))
   }))
 }

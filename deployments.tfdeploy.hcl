@@ -55,6 +55,10 @@ deployment "production" {
             additional_tags = {
               environment = "development"
             }
+            repository = {
+              name = "KarafrOrg/infra-terraform"
+              default_branch = "main"
+            }
           }
         }
       }
