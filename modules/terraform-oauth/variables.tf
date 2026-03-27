@@ -3,3 +3,8 @@ variable "oauth_token" {
   type        = string
   sensitive   = true
 }
+
+variable "organization_names" {
+  description = "The name of the Terraform Cloud organization to associate the OAuth client with."
+  type        = list(string)
+}
