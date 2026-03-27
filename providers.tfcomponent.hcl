@@ -15,3 +15,9 @@ provider "tfe" "main" {
     token = var.terraform_cloud_token
   }
 }
+
+provider "github" "main" {
+  config {
+    token = var.authorization.github.token
+  }
+}

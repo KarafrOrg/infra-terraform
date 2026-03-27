@@ -73,7 +73,8 @@ component "terraform-stack" {
   source = "./modules/terraform-stack"
 
   providers = {
-    tfe = provider.tfe.main
+    tfe    = provider.tfe.main
+    github = provider.github.main
   }
 
   inputs = {
