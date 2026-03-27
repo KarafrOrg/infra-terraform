@@ -10,7 +10,7 @@ deployment "production" {
     // region Authorization
     authorization = {
       github = {
-        token               = store.varset.credentials.stable.github_token
+        token = store.varset.credentials.stable.github_token
       }
     }
     // endregion
