@@ -26,6 +26,7 @@ variable "projects" {
     }))
     stacks = map(object({
       additional_tags = optional(map(string))
+      repository = string
     }))
   }))
 }

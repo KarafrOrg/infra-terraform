@@ -46,6 +46,10 @@ deployment "production" {
             additional_tags = {
               environment = "production"
             }
+            repository = {
+              name = "KarafrOrg/infra-terraform"
+              default_branch = "main"
+            }
           }
           "karafrorg-homelab-project-dev-stack" = {
             additional_tags = {

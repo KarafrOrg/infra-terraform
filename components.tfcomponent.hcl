@@ -68,3 +68,37 @@ component "terraform-oauth" {
     organization_names = keys(var.organizations)
   }
 }
+
+component "terraform-stack" {
+  source = "./modules/terraform-stack"
+
+  providers = {
+    tfe = provider.tfe.main
+  }
+
+  inputs = {
+    stacks = flatten([
+      for project in var.projects : [
+        for stack_name, stack in project.stacks : {
+          name              = stack_name
+          project_name      = project.name
+          organization_name = project.organization_name
+          description = try(stack.description, null)
+          additional_tags = merge(
+            try(project.additional_tags, {}),
+            try(stack.additional_tags, {})
+          )
+          repository = merge(
+            stack.repository,
+            { oauth_token_id = var.authorization.github.oauth_token_id }
+          )
+        }
+      ]
+    ])
+  }
+
+  depends_on = [
+    component.terraform-project,
+    component.terraform-oauth
+  ]
+}
