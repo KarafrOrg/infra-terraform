@@ -1,4 +1,3 @@
-# Authentication variables
 variable "terraform_cloud_token" {
   description = "Terraform Cloud API token with permissions to manage workspaces and variables."
   type        = string
@@ -25,6 +24,7 @@ variable "projects" {
       additional_variable_sets = optional(list(string))
     }))
     stacks = map(object({
+      description     = optional(string)
       additional_tags = optional(map(string))
       repository = object({
         name           = string

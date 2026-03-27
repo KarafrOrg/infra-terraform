@@ -90,8 +90,9 @@ component "terraform-stack" {
             try(stack.additional_tags, {})
           )
           repository = merge(
-            stack.repository,
-            { oauth_token_id = component.terraform-oauth.oauth_client[project.organization_name].oauth_token_id }
+            stack.repository, {
+              oauth_token_id = component.terraform-oauth.oauth_client[project.organization_name].oauth_token_id
+            }
           )
         }
       ]
