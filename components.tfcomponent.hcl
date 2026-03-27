@@ -64,7 +64,7 @@ component "terraform-oauth" {
   }
 
   inputs = {
-    oauth_token        = var.authorization.github.token
-    organization_names = var.organizations[*].name
+    oauth_token = var.authorization.github.token
+    organization_names = keys(var.organizations)
   }
 }
