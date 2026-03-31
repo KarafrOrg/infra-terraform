@@ -7,6 +7,10 @@ required_providers {
     source  = "integrations/github"
     version = "6.6.0"
   }
+  null = {
+    source  = "hashicorp/null"
+    version = "3.2.4"
+  }
 }
 
 provider "tfe" "main" {
@@ -19,4 +23,8 @@ provider "github" "main" {
   config {
     token = var.authorization.github.token
   }
+}
+
+provider "null" "main" {
+  config {}
 }

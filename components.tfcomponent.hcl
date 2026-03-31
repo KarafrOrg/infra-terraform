@@ -75,6 +75,7 @@ component "terraform-stack" {
   providers = {
     tfe    = provider.tfe.main
     github = provider.github.main
+    null   = provider.null.main
   }
 
   inputs = {
