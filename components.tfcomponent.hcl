@@ -1,5 +1,5 @@
-component "terraform-organization" {
-  source = "./modules/terraform-organization"
+component "terraform_organization" {
+  source = "./modules/terraform_organization"
 
   providers = {
     tfe = provider.tfe.main
@@ -10,8 +10,8 @@ component "terraform-organization" {
   }
 }
 
-component "terraform-project" {
-  source = "./modules/terraform-project"
+component "terraform_project" {
+  source = "./modules/terraform_project"
 
   providers = {
     tfe = provider.tfe.main
@@ -22,12 +22,12 @@ component "terraform-project" {
   }
 
   depends_on = [
-    component.terraform-organization
+    component.terraform_organization
   ]
 }
 
-component "terraform-workspace" {
-  source = "./modules/terraform-workspace"
+component "terraform_workspace" {
+  source = "./modules/terraform_workspace"
 
   providers = {
     tfe = provider.tfe.main
@@ -52,12 +52,12 @@ component "terraform-workspace" {
   }
 
   depends_on = [
-    component.terraform-project
+    component.terraform_project
   ]
 }
 
-component "terraform-oauth" {
-  source = "./modules/terraform-oauth"
+component "terraform_oauth" {
+  source = "./modules/terraform_oauth"
 
   providers = {
     tfe = provider.tfe.main
@@ -69,7 +69,7 @@ component "terraform-oauth" {
   }
 }
 
-component "terraform-stack" {
+component "terraform_stack" {
   source = "./modules/terraform-stack"
 
   providers = {
@@ -91,7 +91,7 @@ component "terraform-stack" {
           )
           repository = merge(
             stack.repository, {
-              oauth_token_id = component.terraform-oauth.oauth_client[project.organization_name].oauth_token_id
+              oauth_token_id = component.terraform_oauth.oauth_client[project.organization_name].oauth_token_id
             }
           )
         }
@@ -100,7 +100,7 @@ component "terraform-stack" {
   }
 
   depends_on = [
-    component.terraform-project,
-    component.terraform-oauth
+    component.terraform_project,
+    component.terraform_oauth
   ]
 }
