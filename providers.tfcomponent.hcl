@@ -16,6 +16,7 @@ required_providers {
 provider "tfe" "main" {
   config {
     token = var.terraform_cloud_token
+    organization = "karafrorg-homelab"
   }
 }
 
