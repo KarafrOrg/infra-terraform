@@ -104,3 +104,23 @@ component "terraform_stack" {
     component.terraform_oauth
   ]
 }
+
+removed {
+  from = component.terraform-stack
+}
+
+removed {
+  from = component.terraform-workspace
+}
+
+removed {
+  from = component.terraform-project
+}
+
+removed {
+  from = component.terraform-organization
+}
+
+removed {
+  from = component.terraform-oauth
+}
