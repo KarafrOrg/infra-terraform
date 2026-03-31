@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    null = {
-      source  = "hashicorp/null"
-      version = "3.2.4"
-    }
-  }
-}
 data "github_repository" "repository" {
   for_each = { for stack in var.stacks : stack.name => stack.repository }
   name     = each.value["name"]
