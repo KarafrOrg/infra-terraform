@@ -13,9 +13,9 @@ resource "tfe_stack" "managed" {
   for_each   = { for stack in var.stacks : stack.name => stack }
   name       = each.value.name
   project_id = data.tfe_project.parent[each.key].id
-  vcs_repo {
-    identifier     = "KarafrOrg/infra-terraform"
-    branch         = each.value.repository.default_branch
-    oauth_token_id = each.value.repository.oauth_token_id
-  }
+#  vcs_repo {
+#    identifier     = "KarafrOrg/infra-terraform"
+#    branch         = each.value.repository.default_branch
+#    oauth_token_id = each.value.repository.oauth_token_id
+#  }
 }
