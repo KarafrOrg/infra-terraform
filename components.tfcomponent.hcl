@@ -70,7 +70,7 @@ component "terraform_oauth" {
 }
 
 component "terraform_stack" {
-  source = "./modules/terraform-stack"
+  source = "./modules/terraform_stack"
 
   providers = {
     tfe    = provider.tfe.main
