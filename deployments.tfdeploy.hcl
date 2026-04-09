@@ -4,6 +4,7 @@ store "varset" "credentials" {
 }
 
 deployment "production" {
+  destroy = true
   inputs = {
     terraform_cloud_token = store.varset.credentials.terraform_cloud_token
 
