@@ -17,11 +17,12 @@ projects = {
           owner       = "karafrorg"
         }
         projects = {
-          "karafrorg-homelab" = {
-            description = "Project for the karafrorg homelab workspace"
+          "infra-gcp" = {
+            description = "IAC repo for GCP orchestration"
             additional_tags = {
               environment = "homelab"
-              owner       = "karafrorg"
+              owner       = "KarafrOrg"
+              repository  = "KarafrOrg/infra-gcp"
             }
           }
         }
