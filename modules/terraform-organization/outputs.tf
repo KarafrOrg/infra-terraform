@@ -1,3 +1,4 @@
-output "created_organizations" {
+output "organizations" {
   value = tfe_organization.organization
 }
+
