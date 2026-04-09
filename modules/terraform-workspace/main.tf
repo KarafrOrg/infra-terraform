@@ -14,7 +14,7 @@ resource "tfe_workspace" "default" {
 
 resource "tfe_variable_set" "default" {
   for_each     = var.workspaces
-  name         = "${local.default_variable_set_name_prefix}${each.key}${local.default_variable_set_name_suffix}"
+  name         = replace(replace("${local.default_variable_set_name_prefix}${each.key}${local.default_variable_set_name_suffix}", " ", "_"), "-", "_")
   organization = var.parent_organization_name
 }
 
@@ -36,7 +36,7 @@ resource "tfe_variable_set" "additional" {
       ]
     ]) : "${pair.workspace_name}:${pair.variable_set_name}" => pair
   }
-  name         = each.value.variable_set_name
+  name         = replace(replace(each.value.variable_set_name, " ", "_"), "-", "_")
   organization = each.value.organization_name
 }
 

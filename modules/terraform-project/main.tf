@@ -12,7 +12,7 @@ resource "tfe_project" "project" {
 
 resource "tfe_variable_set" "default" {
   for_each     = var.projects
-  name         = lower("${each.key}_variable_set")
+  name         = replace(replace(lower("${local.default_project_variable_set_name_prefix}${each.key}${local.default_project_variable_set_name_suffix}"), " ", "_"), "-", "_")
   organization = data.tfe_organization.organization.name
 }
 
