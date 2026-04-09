@@ -7,24 +7,14 @@ projects = {
     description = "Project for the karafrorg homelab"
     additional_tags = {
       environment = "homelab"
-      owner       = "karafrorg"
+      owner       = "KarafrOrg"
     }
     workspaces = {
-      "karafrorg-homelab" = {
+      "infra-gcp" = {
         description = "Workspace for the karafrorg homelab project"
         additional_tags = {
           environment = "homelab"
-          owner       = "karafrorg"
-        }
-        projects = {
-          "infra-gcp" = {
-            description = "IAC repo for GCP orchestration"
-            additional_tags = {
-              environment = "homelab"
-              owner       = "KarafrOrg"
-              repository  = "KarafrOrg/infra-gcp"
-            }
-          }
+          repository  = "KarafrOrg/infra-gcp"
         }
       }
     }
