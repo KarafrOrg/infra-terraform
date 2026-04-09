@@ -14,7 +14,7 @@ projects = {
         description = "Workspace for the karafrorg homelab project"
         additional_tags = {
           environment = "homelab"
-          repository  = "KarafrOrg/infra-gcp"
+          repository  = "infra-gcp"
         }
       }
     }
