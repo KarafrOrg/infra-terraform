@@ -11,10 +11,38 @@ projects = {
     }
     workspaces = {
       "infra-gcp" = {
-        description = "Workspace for the karafrorg homelab project"
+        description = "Workspace for GCP orchestration"
         additional_tags = {
           environment = "homelab"
           repository  = "infra-gcp"
+        }
+      }
+      "infra-terraform" = {
+        description = "Workspace for the Terraform cloud orchestration"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-terraform"
+        }
+      }
+      "infra-cloudflare" = {
+        description = "Workspace for the Cloudflare orchestration"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-cloudflare"
+        }
+      }
+      "infra-ovh" = {
+        description = "Workspace for the OVH orchestration"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-ovh"
+        }
+      }
+      "infra-github" = {
+        description = "Workspace for the GitHub orchestration"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-github"
         }
       }
     }
