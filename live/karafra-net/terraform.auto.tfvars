@@ -45,6 +45,13 @@ projects = {
           repository  = "infra-github"
         }
       }
+      "infra-cluster" = {
+        description = "Workspace for bootstraping of kubernetes cluster"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-cluster"
+        }
+      }
     }
   }
 }
