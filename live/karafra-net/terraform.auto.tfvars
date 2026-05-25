@@ -52,6 +52,13 @@ projects = {
           repository  = "infra-cluster"
         }
       }
+      "infra-openstack" = {
+        description = "Workspace for the Openstack orchestration"
+        additional_tags = {
+          environment = "homelab"
+          repository  = "infra-openstack"
+        }
+      }
     }
   }
 }
